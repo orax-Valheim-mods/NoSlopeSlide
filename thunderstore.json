@@ -1,0 +1,14 @@
+{
+  "namespace": "orax",
+  "community": "valheim",
+  "packageDir": "",
+  "icon": "",
+  "readme": "",
+  "changelog": "",
+  "contents": [
+    { "path": "plugins", "target": "plugins" }
+  ],
+  "staleCheckDir": "bin/Release/net48",
+  "categories": [],
+  "containsNsfwContent": false
+}
