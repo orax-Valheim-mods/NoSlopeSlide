@@ -11,7 +11,8 @@ internal class Patch
     {
         private static bool Prefix(Character __instance)
         {
-            if (!NoSlopeSlide.Enabled.Value) return true;
+            if (!NoSlopeSlide.Enabled.Value)
+                return true;
 
             return __instance == null || !__instance.IsPlayer();
         }
@@ -23,27 +24,33 @@ internal class Patch
     {
         private static void Prefix(Character __instance)
         {
-            if (!NoSlopeSlide.Enabled.Value) return;
-            if (__instance == null || __instance != Player.m_localPlayer) return;
+            if (!NoSlopeSlide.Enabled.Value)
+                return;
+            if (__instance == null || __instance != Player.m_localPlayer)
+                return;
 
             // Apply compensation only when grounded and idle.
-            if (__instance.GetMoveDir() != Vector3.zero
+            if (
+                __instance.GetMoveDir() != Vector3.zero
                 || !__instance.IsOnGround()
                 || __instance.IsSwimming()
                 || __instance.IsAttached()
                 || __instance.IsRiding()
                 || __instance.IsDead()
-                || __instance.GetStandingOnShip() != null)
+                || __instance.GetStandingOnShip() != null
+            )
             {
                 return;
             }
 
             Rigidbody body = __instance.GetComponent<Rigidbody>();
             Vector3 groundNormal = __instance.m_lastGroundNormal;
-            if (body == null || groundNormal == null) return;
+            if (body == null || groundNormal == null)
+                return;
 
             // Prevent anti-gravity launch when ground normal vector is invalid.
-            if (groundNormal.sqrMagnitude < 0.5f) return;
+            if (groundNormal.sqrMagnitude < 0.5f)
+                return;
 
             groundNormal.Normalize();
 

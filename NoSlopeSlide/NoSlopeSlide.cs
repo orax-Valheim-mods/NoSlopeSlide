@@ -17,11 +17,7 @@ public class NoSlopeSlide : BaseUnityPlugin
 
     private void Awake()
     {
-        Enabled = Config.Bind(
-            "General",
-            "Enabled",
-            true,
-            "Enable this mod.");
+        Enabled = Config.Bind("General", "Enabled", true, "Enable this mod.");
 
         _harmony = new Harmony(PluginGUID);
         _harmony.PatchAll();
